@@ -113,6 +113,7 @@ function App() {
             stationsList={stationsList}
             setStationSelected={setStationSelected}
             myFavorites={myFavorites}
+            setIsPlaying={setIsPlaying}
           />
         </Grid>
         <Grid

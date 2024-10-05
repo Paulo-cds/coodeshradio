@@ -53,6 +53,7 @@ const SiderComponent = ({
   stationsList,
   setStationSelected,
   myFavorites,
+  setIsPlaying
 }) => {
   const arr = Array(10).fill(0);
 
@@ -128,7 +129,7 @@ const SiderComponent = ({
                 cursor: "pointer",
               }}
               onClick={() => {
-                setStationSelected(item);
+                setStationSelected(item);setIsPlaying(true);setViewSearch(!viewSearch);setViewCard(true)
               }}
             >
               <Box

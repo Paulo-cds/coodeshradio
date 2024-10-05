@@ -13,6 +13,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const CssSearchField = styled(TextField)({
   "& .MuiInputBase-input": {
@@ -150,24 +151,31 @@ const BrowserRadio = ({
 
   return (
     <>
-      <SearchIcon
+      <Box
         sx={{
-          display: { xs: !viewSearch ? "block" : "none", md: "none" },
-          color: "#1267FC",
-          width: "30px",
-          height: "30px",
-          cursor: "pointer",
-          position: "absolute",
-          top: 10,
-          right: 10,
+          width: "100%",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          justifyContent: "flex-start",
+          mt:2,
+          mb:2
         }}
-        onClick={() => {
-          setTimeout(() => {
-            setViewCard(false);
-          }, 1001);
-          setViewSearch(!viewSearch);
-        }}
-      />
+      >
+        <ArrowBackIcon
+          sx={{
+            color: "#1267FC",
+            width: "30px",
+            height: "30px",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            setTimeout(() => {
+              setViewCard(false);
+            }, 1001);
+            setViewSearch(!viewSearch);
+          }}
+        />
+      </Box>
       <Box
         sx={{
           width: "1200px",

@@ -127,7 +127,7 @@ function App() {
             display: { xs: viewCard ? "flex" : "none", md: "flex" },
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: {xs:'flex-start',md:"center"},
             transition: ".8s ease-in-out",
           }}
         >

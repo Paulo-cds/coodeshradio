@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CheckIcon from "@mui/icons-material/Check";
-import MenuIcon from "@mui/icons-material/Menu";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -70,7 +70,7 @@ const SiderComponent = ({
           justifyContent: "flex-end",
         }}
       >
-        <MenuIcon
+        <ArrowForwardIcon
           sx={{
             color: "#1267FC",
             width: "30px",

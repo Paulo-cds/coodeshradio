@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -53,7 +54,9 @@ const SiderComponent = ({
   stationsList,
   setStationSelected,
   myFavorites,
-  setIsPlaying
+  setIsPlaying,
+  errorLoad,
+  handleGetStations,
 }) => {
   const arr = Array(10).fill(0);
 
@@ -93,7 +96,10 @@ const SiderComponent = ({
             backgroundColor: "#62626C",
           }}
           value={typeSearch}
-          onChange={(e) => {setTypeSearch(e.target.value);setValueSearch("")}}
+          onChange={(e) => {
+            setTypeSearch(e.target.value);
+            setValueSearch("");
+          }}
           size="small"
         >
           <MenuItem value={"station"}>Station</MenuItem>
@@ -110,9 +116,29 @@ const SiderComponent = ({
           style: { verticalAlign: "center" },
         }}
         size="small"
+        enable={!errorLoad}
       />
-      {!loadingStations
-        ? stationsList &&
+      {!loadingStations ? (
+        errorLoad ? (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              alignItems: "center",
+              justifyContent: "center",
+              color:'#FFFFFF'
+            }}
+          >
+            <Typography>
+              Stations not find, click the button for reload.
+            </Typography>
+            <Button variant="contained" onClick={() => handleGetStations()}>
+              Reload
+            </Button>
+          </Box>
+        ) : (
+          stationsList &&
           stationsList.length > 0 &&
           stationsList.map((item) => (
             <Box
@@ -129,7 +155,10 @@ const SiderComponent = ({
                 cursor: "pointer",
               }}
               onClick={() => {
-                setStationSelected(item);setIsPlaying(true);setViewSearch(!viewSearch);setViewCard(true)
+                setStationSelected(item);
+                setIsPlaying(true);
+                setViewSearch(!viewSearch);
+                setViewCard(true);
               }}
             >
               <Box
@@ -170,16 +199,19 @@ const SiderComponent = ({
               )}
             </Box>
           ))
-        : arr.map((item, i) => (
-            <Skeleton
-              key={i}
-              sx={{
-                height: "60px",
-                width: "98%",
-                backgroundColor: "#62626C",
-              }}
-            />
-          ))}
+        )
+      ) : (
+        arr.map((item, i) => (
+          <Skeleton
+            key={i}
+            sx={{
+              height: "60px",
+              width: "98%",
+              backgroundColor: "#62626C",
+            }}
+          />
+        ))
+      )}
     </>
   );
 };

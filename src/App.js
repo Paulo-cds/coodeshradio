@@ -22,6 +22,7 @@ function App() {
   const [searchFavorites, setSearchFavorites] = useState("");
   const [loadingStations, setLoadingStations] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [errorLoad, setErrorLoad] = useState(false)
 
   useEffect(() => {
     handleGetStations();
@@ -34,11 +35,13 @@ function App() {
 
   const handleGetStations = async () => {
     setLoadingStations(true);
+    setErrorLoad(false)
     try {
       const response = await handleGetStationsService();
       setStationsList(response);
     } catch (e) {
       console.log(e);
+      setErrorLoad(true)
     }
     setLoadingStations(false);
   };
@@ -114,6 +117,8 @@ function App() {
             setStationSelected={setStationSelected}
             myFavorites={myFavorites}
             setIsPlaying={setIsPlaying}
+            errorLoad={errorLoad}
+            handleGetStations={handleGetStations}
           />
         </Grid>
         <Grid

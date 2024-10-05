@@ -26,4 +26,4 @@ O projeto é um challenge by coodesh. Onde tem a proposta de  trazer a rádio de
 
 **Obs1:** A lista de preferidos é salva no localStorage para quando o usuário retornar na aplicação ter as rádios salvas.
 
-**Obs 2:** Ao final o projeto foi publicado na Vercel.
+**Obs 2:** Ao final o projeto foi publicado na Vercel. No link: https://coodeshradio.vercel.app/
